@@ -1,0 +1,22 @@
+<table class="table">
+  <thead style="background-color: rgb(192, 183, 183);">
+    <th>id</th>
+    <th>name</th>
+    <th>password</th>
+    <th>role</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor='let p of listUser'>
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.password}}</td>
+      <td>{{p.role}}</td>
+      <td>
+      <a [routerLink]="[p.id,p.password,p.role,'profil']"(click)="Connecter(p.id,1)">
+        link
+      </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,130 @@
+<app-navbar2></app-navbar2>
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new voyage</button>
+        <br><br>
+        <ng-template #mymodal1 let-modal1>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title" >Add new voyage</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                    <span aria-hidden="true" (click)="cancel()">×</span>
+                </button>
+
+            </div>
+          <div class="center">
+            <form>
+                <div class="row" class="col-md-6">
+                    <input type="text" placeholder="Destination" [(ngModel)]="voyage.distnation"
+                        [ngModelOptions]="{standalone : true}">
+                </div>
+              <div class="row" class="col-md-6">
+                <input type="date" placeholder="Date de départ" [(ngModel)]="voyage.date"
+                       [ngModelOptions]="{standalone : true}">
+              </div>
+                <div class="row" class="col-md-6">
+                    <input type="number" placeholder="Duree" [(ngModel)]="voyage.duree"
+                        [ngModelOptions]="{standalone : true}">
+                </div>
+              <div class="row" class="col-md-6">
+                <textarea placeholder="Description du voyage" [(ngModel)]="voyage.discription"
+                       [ngModelOptions]="{standalone : true}">
+                  </textarea>
+              </div>
+              <div  class="row" class="col-md-6">
+                <span class="details">objet_de_voyage</span>
+                <select class="form-select" aria-label="Default select example"  id="jobeType" class="form-control" [(ngModel)]="voyage.objet_de_voyage" [ngModelOptions]="{standalone : true}">
+                  <option value="SEMINAIRE">SEMINAIRE</option>
+                  <option value="VISITE_ENTREPRISE">VISITE_ENTREPRISE</option>
+
+                </select>
+              </div>
+                <br>
+                <button type="button" class="btn btn-success" (click)="addVoyage(voyage)" (click)="modal1.close('Save click')">Add</button>
+                <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+            </form>
+          </div>
+        </ng-template>
+        <div class="row">
+            <div class="card" class="text-center">
+                <table class="table">
+                    <thead style="background-color: rgb(192, 183, 183);">
+
+                        <th>Destination</th>
+                        <th>Date de départ</th>
+                        <th>Duree</th>
+                        <th>Description</th>
+                        <th>Objet de voyage</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor='let p of listVoyage'>
+
+                            <td>{{p.distnation}}</td>
+                          <td>{{p.date.substring(0,10)}}</td>
+                            <td>{{p.duree}}</td>
+                          <td style="overflow-y: scroll;overflow-wrap: anywhere;">{{p.discription}}</td>
+                          <td>{{p.objet_de_voyage}}</td>
+
+                            <td><button type="button" class="btn btn-outline-primary"
+                                    (click)="open(mymodal)">edit</button>
+                                <ng-template #mymodal let-modal>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                        <button type="button" class="close" aria-label="Close"
+                                            (click)="modal.dismiss('Cross click')">
+                                            <span aria-hidden="true" (click)="cancel()">×</span>
+
+                                        </button>
+
+                                    </div>
+                                    <div>
+                                    <form>
+                                        <div class="modal-body">
+
+                                            <div class="row" class="col-md-5">
+                                                <label>distination</label>
+                                                <input type="text" [(ngModel)]="p.distnation" [ngModelOptions]="{standalone : true}" />
+                                            </div>
+                                          <div class="row" class="col-md-6">
+                                            <label>Date de départ</label>
+                                            <input type="date" placeholder="Date de départ" [(ngModel)]="p.date"
+                                                   [ngModelOptions]="{standalone : true}">
+                                          </div>
+                                          <div class="row" class="col-md-5">
+                                                <label>duree</label>
+                                                <input type="number" [(ngModel)]="p.duree" [ngModelOptions]="{standalone : true}" />
+                                            </div>
+                                          <div class="row" class="col-md-5">
+                                            <label>discription</label>
+                                            <input type="text" [(ngModel)]="p.discription" [ngModelOptions]="{standalone : true}" />
+                                          </div>
+                                          <div class="row" class="col-md-5">
+                                            <span class="details">objet_de_voyage</span>
+                                            <select class="form-select" aria-label="Default select example"  id="jobeType" class="form-control" [(ngModel)]="p.objet_de_voyage" [ngModelOptions]="{standalone : true}">
+                                              <option value="SEMINAIRE">SEMINAIRE</option>
+                                              <option value="VISITE_ENTREPRISE">VISITE_ENTREPRISE</option>
+
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-info"
+                                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                                            <button class="btn btn-success"(click)="edit(p)" (click)="modal.close('Save click')">Validate</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                </ng-template>
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="delete(p.idVoyage)">delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

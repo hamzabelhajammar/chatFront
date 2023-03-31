@@ -1,0 +1,36 @@
+<app-navbar1></app-navbar1>
+
+<section class="featured-job-area feature-padding">
+  <div class="container">
+    <!-- Section Tittle -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-tittle text-center">
+
+          <h2>List de Employee</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+        <div class="single-job-items mb-30" style="    background-color: #f6f7ff;" *ngFor="let e of this.listemployee">
+          <div class="job-items" style="    background-color: #f6f7ff;">
+            <div class="company-img">
+              <a [routerLink]="['/',this.id,this.psw,'0','listdevoyage']"><img src="https://www.pattenacademy.org/uploads/1/2/8/9/12894468/9670424_orig.jpg" style="width: 100px;" alt=""></a>
+            </div>
+            <div class="job-tittle" style="margin-top: 31px;">
+              <a [routerLink]="['/',this.id,this.psw,'0','listdevoyage']"><h4>{{e.name}}</h4></a>
+
+            </div>
+          </div>
+          <div class="items-link f-right" style="margin-top: 31px;">
+            <a [routerLink]="['/',this.id,this.psw,'0',e.id,'listdevoyage']" >List de Voyage</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

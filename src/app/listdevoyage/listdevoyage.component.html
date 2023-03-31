@@ -1,0 +1,249 @@
+<app-navbar1></app-navbar1>
+<style>
+  #aaaa {
+    position: relative;
+    display: inline-block;
+    padding: 13px 30px;
+    margin: 5px 350px;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+
+  }
+  #bbbb{
+    position: relative;
+    display: inline-block;
+    padding: 13px 30px;
+    margin: 5px 350px;
+    color: #aeffab;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+
+  }
+  #aaaa:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 200px #03e9f4;
+    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+  }
+  #bbbb:hover{
+    background: #aeffab;
+    color: #050801;
+    box-shadow: 0 0 5px #aeffab,
+    0 0 25px #aeffab,
+    0 0 50px #aeffab,
+    0 0 200px #aeffab;
+    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+  }
+  #aaaa span,#bbbb span{
+    position: absolute;
+    display: block;
+  }
+  #aaaa span:nth-child(1){
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#03e9f4);
+    animation: animate1 1s linear infinite;
+  }
+  #bbbb span:nth-child(1){
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent, #aeffab);
+    animation: animate1 1s linear infinite;
+  }
+  @keyframes animate1{
+    0%{
+      left: -100%;
+    }
+    50%,100%{
+      left: 100%;
+    }
+  }
+  #aaaa span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#03e9f4);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  #bbbb span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent, #aeffab);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes animate2{
+    0%{
+      top: -100%;
+    }
+    50%,100%{
+      top: 100%;
+    }
+  }
+  #aaaa span:nth-child(3){
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#03e9f4);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+  }
+  #bbbb span:nth-child(3){
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent, #aeffab);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+  }
+  @keyframes animate3{
+    0%{
+      right: -100%;
+    }
+    50%,100%{
+      right: 100%;
+    }
+  }
+
+
+  #aaaa span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#03e9f4);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  #bbbb span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent, #aeffab);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes animate4{
+    0%{
+      bottom: -100%;
+    }
+    50%,100%{
+      bottom: 100%;
+    }
+  }
+  ::ng-deep .modal-dialog{
+    max-width: 866px;
+    margin-top: 80px;
+    height: 572px;
+  }
+  ::ng-deep .modal-content{
+    height: 578px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  ::ng-deep .modal.show .modal-dialog {
+    transform: none;
+  }
+</style>
+<div class="home-blog-area blog-h-padding">
+  <div class="container">
+    <!-- Section Tittle -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-tittle text-center">
+
+          <h2>List de Voyage</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let v of this.listVoyage">
+        <div class="home-blog-single mb-30">
+          <div class="blog-img-cap">
+            <div class="blog-img">
+              <img src="assets/img/blog/home-blog2.jpg" style="margin-left: 79px;margin-top: 25px;width: 486px;" alt="">
+              <!-- Blog date -->
+              <div class="blog-date text-center" style="margin-left: 45px;">
+                <span>{{v.duree}}</span>
+                <p> Days</p>
+              </div>
+            </div>
+            <div class="blog-cap">
+              <p>{{v.distnation}}</p>
+              <p>{{v.date.substring(0,10)}}</p>
+              <h3 style="    width: 508px;"><p style="    height: 300px;overflow-y: scroll;">{{v.discription}}</p></h3>
+              <a id="aaaa" (click)="this.getfindbydistnation(v.idVoyage) ;open(mymodal2);" >Matching</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6" >
+        <div class="home-blog-single mb-30">
+          <div class="blog-img-cap">
+            <div class="blog-img">
+              <img src="assets/img/blog/home-blog2.jpg" style="margin-left: 79px;margin-top: 25px;width: 486px;" alt="">
+              <!-- Blog date -->
+              <div class="blog-date text-center" style="margin-left: 45px;">
+                <span>aaaaaa</span>
+                <p> Days</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<ng-template #mymodal2 let-modal2 id="custom-class">
+      <button type="button" class="close" aria-label="Close" (click)="modal2.dismiss('Cross click')">
+        <span aria-hidden="true" (click)="cancel()">×</span>
+      </button>
+      <div class="row" >
+        <div class="col-xl-6 col-lg-6 col-md-6" style="    width: 288px;height: 346px;" *ngFor="let v of this.listVoyageMatching ; let i =index"   [ngModel]="this.test(i)">
+          <div class="home-blog-single mb-30">
+            <div class="blog-img-cap">
+              <div class="blog-img">
+                <img src="assets/img/blog/home-blog2.jpg" style="width: 213px;margin-left: 26px;" alt="">
+                <!-- Blog date -->
+                <div _ngcontent-gug-c111="" class="blog-date text-center" style="  height: 34px;  margin-left: 37px;margin-right: 193px;background-color: red;">
+                  <span _ngcontent-gug-c111="" style="font-size: 14px;">{{v.duree}}</span>
+                  <p _ngcontent-gug-c111="" style=" margin-top: -14px;   font-size: 12px;"> Days</p>
+                </div>
+              </div>
+              <div class="blog-cap">
+                <p style="margin-left: 102px;margin-top: -33px;">{{v.date.substring(0,10)}}</p>
+                <p style="    margin-left: 37px;margin-top: -18px;font-size: 13px;">{{this.names[i][1]}}</p>
+                <p style="    margin-left: 37px;margin-top: -27px;font-size: 13px;">{{this.names[i][0]}}</p>
+                <h3><p style="  margin-right: 27px;  margin-left: 37px;margin-top: -18px;font-size: 13px; overflow-wrap: anywhere;overflow-y: scroll; height: 94px;">{{v.discription}}</p></h3>
+                <a id="bbbb"  style="  color:#00e228; margin:  4px 13px 5px 81px;" (click)="ajouterInvitationEtAffecterEntreprise(v.idVoyage,v.idEmployee,i)" *ngIf="this.t">	Sent</a>
+                <a id="bbbb"  style="  color:#00e228; margin:  4px 13px 5px 81px;"  *ngIf="!this.t" >		&#10003;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</ng-template>
